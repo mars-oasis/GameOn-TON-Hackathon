@@ -6,8 +6,13 @@
 
 #### Mars Oasis envisions an evolutionary narrative of Martian civilization spanning multiple eras. In 2030, a leader named E announces a regular interplanetary travel program between Earth and Mars, marking the beginning of humanity's sustainable civilization on Mars, known as Mars Oasis. To address Mars's oxygen deficiency and enhance its ecosystem, humanity begins cultivating trees on the Martian surface. This marks the start of the first era on Mars—The Oasis Era (2030 - 2070).
 
-#### During this period, trees become an invaluable asset on Mars.
-
-#### In response, the first settlers decide to issue Mars’s universal currency based on the total number of trees planted, incentivizing everyone to participate in transforming Mars's ecological landscape.
+#### During this period, trees become an invaluable asset on Mars. In response, the first settlers decide to issue Mars’s universal currency based on the total number of trees planted, incentivizing everyone to participate in transforming Mars's ecological landscape.
 
 #### In the Mars Oasis game, players take on the role of settlers managing limited resources, such as energy obtained through on-chain activities on the TON network. These resources are used to plant trees, produce oxygen, and transform the ecosystem. Additionally, players can cooperate with friends to accelerate progress in the game.
+
+#### White Paper https://docs.marsoasis.io
+#### Telegram Mini App https://t.me/MarsoasisBot
+#### Website https://www.marsoasis.io
+#### X https://x.com/MarsOasis_io
+#### Telegram Announcement https://t.me/MarsoasisAnn
+#### Telegram Chat https://t.me/MarsoasisChat
