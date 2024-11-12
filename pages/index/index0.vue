@@ -19,7 +19,7 @@
 				address
 			</view>
 			<view class="p_t_40 font_size_32"  @click="openWallet">
-				wallet
+				open wallet
 			</view>
 			<view style="height: 50rpx;" class=""></view>
 			<view class="p_t_40 font_size_32"  @click="closeWallet">
