@@ -1,68 +1,68 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页",
+				"navigationBarTitleText": "home",
 				"navigationStyle": "custom"
 			}
 		}
 		,{
 			"path": "pages/index/store",
 			"style": {
-				"navigationBarTitleText": "商店",
+				"navigationBarTitleText": "store",
 				"navigationStyle": "custom"
 			}
 		}
 		,{
 			"path": "pages/index/backpack",
 			"style": {
-				"navigationBarTitleText": "背包"
+				"navigationBarTitleText": "bag"
 			}
 		},
 		{
 			"path": "pages/forest/index",
 			"style": {
-				"navigationBarTitleText": "森林",
+				"navigationBarTitleText": "tree",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/task/index",
 			"style": {
-				"navigationBarTitleText": "任务",
+				"navigationBarTitleText": "task",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/task/web",
 			"style": {
-				"navigationBarTitleText": "外部链接"
+				"navigationBarTitleText": "link"
 			}
 		},
 		{
 			"path": "pages/friend/index",
 			"style": {
-				"navigationBarTitleText": "好友",
+				"navigationBarTitleText": "friend",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/friend/detail",
 			"style": {
-				"navigationBarTitleText": "好友家园"
+				"navigationBarTitleText": "friend oasis"
 			}
 		},
 		{
 			"path": "pages/friend/add",
 			"style": {
-				"navigationBarTitleText": "添加好友"
+				"navigationBarTitleText": "add"
 			}
 		},
 		{
 			"path": "pages/wallet/index",
 			"style": {
-				"navigationBarTitleText": "钱包",
+				"navigationBarTitleText": "wallet",
 				"navigationStyle": "custom"
 			}
 		}
@@ -79,38 +79,7 @@
 	  "color": "#999999",
 	  "selectedColor": "#18AA5A",
 	  "custom": true
-	  // "list": [
-	  //   {
-	  //     "pagePath": "pages/tabbars/index",
-	  //     "iconPath": "static/tabbars/index.png",
-	  //     "selectedIconPath": "static/tabbars/index_active.png",
-	  //     "text": "首页"
-	  //   },
-	  //   {
-	  //     "pagePath": "pages/tabbars/index",
-	  //     "iconPath": "static/tabbars/booking.png",
-	  //     "selectedIconPath": "static/tabbars/booking_active.png",
-	  //     "text": "森林"
-	  //   },
-	  //   {
-	  //     "pagePath": "pages/tabbars/index",
-	  //     "iconPath": "static/tabbars/fly.png",
-	  //     "selectedIconPath": "static/tabbars/fly_active.png",
-	  //     "text": "任务"
-	  //   },
-	  //   {
-	  //     "pagePath": "pages/tabbars/index",
-	  //     "iconPath": "static/tabbars/call_police.png",
-	  //     "selectedIconPath": "static/tabbars/call_police_active.png",
-	  //     "text": "好友"
-	  //   },
-	  //   {
-	  //     "pagePath": "pages/tabbars/index",
-	  //     "iconPath": "static/tabbars/me.png",
-	  //     "selectedIconPath": "static/tabbars/me_active.png",
-	  //     "text": "钱包"
-	  //   }
-	  // ]
+	
 	},
 	"uniIdRouter": {}
 }
