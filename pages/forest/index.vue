@@ -10,44 +10,42 @@
 				</view>
 				<view class="border_radius_15 color_bg_main color_white p_10">
 					<text class="">{{ item.name}}</text>
-					<text v-if="item.owner" style="text-align:right" class="m_r_10">等级: {{ item.owner.tree_level }} </text>
+					<text v-if="item.owner" style="text-align:right" class="m_r_10">: {{ item.owner.tree_level }} </text>
 				</view>
 
 				<view v-if="item.owner">
 					<view v-if="item.owner.tree_level === 20"
-						class="m_t_15 color_bg_ffff color_main border_radius_15 border text_align_cen p_t_b_10">已达顶级</view>
+						class="m_t_15 color_bg_ffff color_main border_radius_15 border text_align_cen p_t_b_10"></view>
 					<view v-else class="m_t_15 border_radius_15 color_bg_main color_white text_align_cen p_t_b_10"
-						@click="handleRefresh(item)">升级还需{{ upgradeTreeConfig[item.owner.tree_level + 1].cost_amount }}g
+						@click="handleRefresh(item)">{{ upgradeTreeConfig[item.owner.tree_level + 1].cost_amount }}g
 					</view>
 				</view>
-				<view v-else class="m_t_15 color_bg_999 color_white text_align_cen border_radius_15 p_t_b_10">未拥有</view>
+				<view v-else class="m_t_15 color_bg_999 color_white text_align_cen border_radius_15 p_t_b_10"></view>
 			</view>
 		</view>
-
-		<!-- 占位符 -->
 		<view style="height: 200rpx;"></view>
-		<!-- 自定义导航栏 -->
+		
 		<tabber-list></tabber-list>
 		<!-- v-if="popupShow" -->
 		<uni-popup ref="popupRef" >
 			<view class="flex-col-center p_30"
 				style="width:500rpx; background-color: #fff;box-sizing:border-box;border-radius: 20rpx">
-				<view class="font_size_30 p_t_20">提示: </view>
+				<view class="font_size_30 p_t_20">: </view>
 				<image v-if="detail.img_url" :src="imgPath + detail.img_url" mode="aspectFill"
 					style="width: 350rpx;height: 350rpx;display: block;border-radius: 10rpx;">></image>
 				<text lass="font_size_26 p_t_20">{{ detail.name}}</text>
 				<view class="font_size_30 p_t_20">Lv.{{detail.owner.tree_level }} -->
 					Lv.{{ detail.owner.tree_level +1 }}</view>
 				<view class="font_size_30 p_t_20">
-					氧气产出/每小时:{{ upgradeTreeConfig[detail.owner.tree_level].output_mul + detail.owner.init_output_mul }}
+					O2/h:{{ upgradeTreeConfig[detail.owner.tree_level].output_mul + detail.owner.init_output_mul }}
 					--> {{ upgradeTreeConfig[detail.owner.tree_level +1].output_mul + detail.owner.init_output_mul }}
 				</view>
-				<view class="font_size_30 p_t_20">升级消耗能量:{{ upgradeTreeConfig[detail.owner.tree_level +1].cost_amount }}
+				<view class="font_size_30 p_t_20">Need more energy:{{ upgradeTreeConfig[detail.owner.tree_level +1].cost_amount }}
 				</view>
 				<view class="flex_center flex p_t_20">
-					<view class="border p_t_b_10 p_l_r_30 m_r_30" @click="close">取消</view>
+					<view class="border p_t_b_10 p_l_r_30 m_r_30" @click="close">Cancel</view>
 					<view class="color_bg_main color_white p_t_b_10 p_l_r_30" @click="handleUse">
-						{{ detail.good_type === 1 ? '使用': '装扮'}}</view>
+						{{ detail.good_type === 1 ? 'Use': ' Decorate'}}</view>
 				</view>
 			</view>
 		</uni-popup>
@@ -81,10 +79,9 @@
 	const popupShow = ref(false)
 	const detail = ref({})
 	const imgPath = config.IMG_PREFIX
-	const treeData = ref([]) // 渲染数据
+	const treeData = ref([]) 
 	const userInfo = computed(() => store.info)
 	const upgradeTreeConfig = computed(() => store.upgradeTreeConfig)
-	// 初始化数据
 	const getInitData = () => {
 		getGoodsData({
 			user_id: userInfo.value.user_id,
@@ -101,7 +98,7 @@
 			good_id: detail.value.good_id
 		}).then(res => {
 			uni.showToast({
-				title: "升级成功",
+				title: "Success",
 				icon: 'none',
 			})
 			getInitData()
@@ -115,7 +112,6 @@
 		})
 	}
 
-	// 装扮
 	const handleRefresh = (item) => {
 		popupShow.value = true
 		detail.value = item
