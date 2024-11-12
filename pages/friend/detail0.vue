@@ -1,28 +1,22 @@
 <template>
 	<view class="page">
 		<view class="canvas">
-			<!-- 云朵位移 -->
+			
 			<view class="cloud">
 				<view class="fly-1"></view>
 				<view class="fly-2"></view>
 				<view class="fly-3"></view>
 			</view>
-
-			<!-- 树、水滴值 -->
 			<view class="tree">
 				<view v-for="(o, i) in rainArr" :key="i" :class="['rain rain-'+ stages]" @click="rainFun(i, o)">{{o}}<text>g</text></view>
 				<image :src="'../../static/img/tree-'+ stages +'.png'" :class="['tree-'+ stages, treemove ? 'move-'+ stages : '']" hover-class="none" @click="tree"></image>
 			</view>
-
-			<!-- 水壶、浇水动画 -->
 			<view class="kettle">
 				<view class="kettls" @click="water" hover-class="none"></view>
 				<view class="flasks" v-show="watercss" :class="{'water': watercss}"></view>
 				<view class="flasms" v-show="!watercss" @click="water" hover-class="none"></view>
 				<view class="waters" v-show="waterdom"></view>
 			</view>
-
-			<!-- 用户信息、水滴值 -->
 			<view class="sumup">
 				<view class="user">
 					<view class="cover">
@@ -34,7 +28,7 @@
 							<view :class="'sex-'+ info.sex"></view>
 						</view>
 						<view class="drop" hover-class="none">
-							<text v-text="info.votes + ' 水滴'"></text>
+							<text v-text="info.votes + 'waterdrop'"></text>
 							<view class="icon">
 								<text class="plus" :class="{'pluss': pluss}">+{{plussNum}}</text>
 							</view>
@@ -42,7 +36,6 @@
 					</view>
 				</view>
 
-				<!-- 树成长进度 -->
 				<view class="speed">
 					<view class="progress">
 						<image class="speed-1" :src="'../../static/img/speed-1'+ [1 == stages ? '-h' : ''] +'.png'"></image>
@@ -62,29 +55,29 @@
 		data() {
 			return {
 				info: {
-					name: '沐枫', 	// 用户姓名
-					sex: 2, 		// 用户姓别 1男， 2女
-					votes: 8, 		// 水滴值 默认为8
-					avatar: '../../static/img/detail-bg.jpg' 	//用户头像
+					name: 'musa', 
+					sex: 2, 		
+					votes: 8, 		
+					avatar: '../../static/img/detail-bg.jpg' 	
 				},
-				rainArr: [28, 63, 5, 902], 	// 雨滴值 点击收取
+				rainArr: [28, 63, 5, 902], 	
 
-				stages: 1, 			// 成长阶段 1(小树[默认])，中2(中树) ，大3(大树)
-				during: 100, 		// 阶段阈值 1、小树[100以下](during > votes ) ，2、中树[100及以上 并且小于1000](during <= votes && oldest > votes)
-				oldest: 1000, 		// 阶段阈值 3、大树[1000及以上](oldest <= votes )
-				plussNum: 1, 		// 加值数量（默认1）
+				stages: 1, 			
+				during: 100, 		
+				oldest: 1000, 		
+				plussNum: 1, 		
 
-				pluss: false, 		// 水滴值+1动画开关
-				movetree: true, 	// 树动画开关
-				treemove: false, 	// 树大小动画类型开关
-				wateroff: true, 	// 浇水动画开关
-				watercss: false, 	// 水壶动画开关
-				waterdom: false 	// 水滴动画开关
+				pluss: false, 		
+				movetree: true, 	
+				treemove: false, 	
+				wateroff: true, 	
+				watercss: false, 	
+				waterdom: false 	
 			};
 		},
 
 		methods: {
-			// 设置树的大小，恢复动画
+			
 			setTree(time = 4000) {
 				setTimeout(() => {
 					this.plussNum = 1;
@@ -92,29 +85,29 @@
 					this.wateroff = true;
 					this.watercss = false;
 					this.treemove = false;
-					// 小树阶段
+				
 					if (this.during > this.info.vote) {
 						this.stages = 1;
 					};
-					// 中树阶段
+				
 					if (this.during <= this.info.votes && this.oldest > this.info.votes) {
 						this.stages = 2;
 					};
-					// 大树阶段
+			
 					if (this.oldest <= this.info.votes) {
 						this.stages = 3;
 					};
 				}, time);
 			},
 
-			// 点击用户头像放大
+		
 			zoom(o) {
 				uni.previewImage({
 					'urls': [o]
 				});
 			},
 
-			// 收取雨滴的动画
+		
 			rainFun(i, o) {
 				this.plussNum = o;
 				this.info.votes = Number(this.info.votes) + (o - 0);
@@ -126,7 +119,7 @@
 				this.setTree(2000);
 			},
 
-			// 点击树的动画
+		
 			tree() {
 				if (this.movetree) {
 					this.treemove = true;
@@ -138,7 +131,7 @@
 				};
 			},
 
-			// 水壶浇水动画
+	
 			water() {
 				if (this.wateroff) {
 					this.watercss = true;
