@@ -1,13 +1,10 @@
-// 公共部分
 
 
-
-// 获取现在的时间戳
 function getNowTimestamp(){
 	return new Date().getTime()
 }
 
-// 获取年月日时分秒
+
 function getDateData(timestamp){
 	var date = new Date(timestamp)
 	var dateData = {
@@ -27,31 +24,17 @@ function getDateData(timestamp){
 	return data
 }
 
-// 星期数组
-const week = ['周日','周一','周二','周三','周四','周五','周六']
 
-// 公共部分 end....
-
-
-
-
-
-
-// 获取时间戳
-// 获取当前毫秒级时间戳
 const getTimestamp = ()=>{
 	return getNowTimestamp()
 }
 
-// 获取日期时间
-// 获取现在的日期时间 YYYY-MM-DD HH:MM:SS
+
 const getDateTime = ()=>{
 	var data = timestampToDate(getNowTimestamp())
 	return data
 }
 
-// 时间戳转换为日期格式
-// Timestamp to YYYY-MM-DD HH:MM:SS
 const timestampToDate = (timestamp)=>{
 	var dateData = getDateData(timestamp)
 	var data = `${dateData.date} ${dateData.time}`
@@ -59,32 +42,29 @@ const timestampToDate = (timestamp)=>{
 	return data
 }
 
-// 日期格式转换为时间戳
-// YYYY-MM-DD HH:MM:SS to Timestamp
 const dateToTimestamp = (DateTime)=>{
 	DateTime = DateTime.replaceAll('-','/')
 	return new Date(DateTime).getTime()
 }
 
-// 过去或未来时间戳距离现在的时间
-// 刚刚/1分钟内、3分钟前/后、1小时前/后、1天前/后、1月前/后、2019-11-11
+
 const timeDistance = (timestamp)=>{
 	
-	var m = 60*1000 // 分
-	var h = 60*m    // 时
-	var d = 24*h    // 天
-	var M = 30*d    // 月
-	var y = 12*M    // 年
+	var m = 60*1000
+	var h = 60*m   
+	var d = 24*h
+	var M = 30*d    
+	var y = 12*M   
 	
-	var now = getNowTimestamp()		//现在的时间
-	var distance = null				//间隔时间
-	var flag = null					//过去前 未来后
-	if(now>timestamp){				//时间是过去的
+	var now = getNowTimestamp()		
+	var distance = null				
+	var flag = null					
+	if(now>timestamp){				
 		distance = now - timestamp
-		flag = "前"
-	}else{							//时间是未来的
+		flag = "front"
+	}else{							
 		distance = timestamp - now
-		flag = "后"
+		flag = "back"
 	}
 	
 	var data = null
@@ -106,27 +86,26 @@ const timeDistance = (timestamp)=>{
 			data = `${parseInt(distance/m)}分钟${flag}`
 		break
 		case distance < m:
-			data = flag=='前'?'刚刚':'1分钟内'
+			data = flag=='front'?'just now':'1'
 		break
 	}
 	return data
 }
 
-// 过去时间戳简称化
-// 12:01、昨天、周一、6月5日、2019年11月11日
+
 const timeAbbreviated = (timestamp)=>{
-	var dateData = getDateData(timestamp)										//传入的时间数据
-	var nowDateData = getDateData(getNowTimestamp())							//现在的时间数据
-	var today = dateToTimestamp(`${nowDateData.date} 00:00:00`)					//今天0点的时间戳
-	var yesterday = today-24*60*60*1000											//昨天0点时间戳
-	var threeDays = today-24*60*60*1000*3										//三天前0点时间戳
-	var thisYear =  dateToTimestamp(`${nowDateData.data.year}-01-01 00:00:00`)		//今年0点时间戳
+	var dateData = getDateData(timestamp)										
+	var nowDateData = getDateData(getNowTimestamp())							
+	var today = dateToTimestamp(`${nowDateData.date} 00:00:00`)					
+	var yesterday = today-24*60*60*1000											
+	var threeDays = today-24*60*60*1000*3										
+	var thisYear =  dateToTimestamp(`${nowDateData.data.year}-01-01 00:00:00`)		
 	switch(true){
 		case timestamp >= today:
 			data = `${dateData.data.hour}:${dateData.data.minute}`
 		break
 		case timestamp >= yesterday:
-			data = '昨天'
+			data = 'yesterday'
 		break
 		case timestamp >= threeDays:
 			data = dateData.data.week
@@ -143,16 +122,12 @@ const timeAbbreviated = (timestamp)=>{
 }
 
 
-// 两个时间戳 计算倒计时数据
-// 返回：day、hour、minute、second
 
-// start	开始时间戳
-// end		结束时间戳
 
 const countdown = (start,end)=>{
 	start = parseInt(start/1000)
 	end = parseInt(end/1000)
-	var distance = end - start // 间隔时间(秒)
+	var distance = end - start 
 	var data = {
 		day:0,
 		hour:0,
