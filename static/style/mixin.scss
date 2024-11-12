@@ -1,0 +1,35 @@
+@mixin ellipsis($row: 1, $color: #333) {
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $row;
+	-webkit-box-orient: vertical;
+	color: $color;
+}
+
+@mixin flex($row: row, $main: center, $cross: center) {
+	display: flex;
+	flex-direction: $row;
+	justify-content: $main;
+	align-items: $cross;
+}
+
+@mixin warp {
+	flex-wrap: wrap;
+}
+
+@mixin rad($value...) {
+	border-radius: $value;
+}
+
+@mixin fontSize($size: 28rpx) {
+	font-size: $size;
+}
+
+@mixin border($color, $width: 1rpx) {
+	border: $width solid $color;
+}
+
+@mixin font-weight($value: 400) {
+	font-weight: $value;
+}
