@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@telegram-apps/sdk-react": "^2.0.9",
+    "@ton/ton": "^15.1.0",
+    "@tonconnect/ui": "^2.0.9",
+    "@vue/cli-shared-utils": "^5.0.8",
+    "axios": "^1.7.7",
+    "base64-js": "^1.5.1",
+    "buffer": "^6.0.3",
+    "clipboard": "^2.0.11",
+    "crypto-js": "^4.2.0",
+    "pinia": "^2.2.4",
+    "react": "^18.3.1",
+    "tonweb": "^0.0.66",
+    "vue-i18n": "^10.0.4"
+  },
+  "devDependencies": {
+    "vue-cli-plugin-i18n": "~2.3.2"
+  }
+}
