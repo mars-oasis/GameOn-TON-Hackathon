@@ -2,10 +2,10 @@
 	<view class="relative page-home">
 
 		<p class="langInner" @click="handleCh($i18n)">
-			中文
+			
 		</p>
 		<view class="langInner" @click="handleEn($i18n)">
-			英文
+			
 		</view>
 		<view class="p_t_40 font_size_32" @click="closeWallet">
 			{{ $t("r_renwu")}}
@@ -67,58 +67,58 @@
 		<!-- <view class="">
 			
 			<view class="font_size_32 p_t_30">
-				姓名：{{ userInfo.first_name }}
+				name：{{ userInfo.first_name }}
 			</view>
 			<view class="font_size_32 p_t_30">
-				邀请码：{{ userInfo.invite_code }}
+				code：{{ userInfo.invite_code }}
 			</view>
 			<view class="font_size_32 p_t_30">
-				氧气：{{ oxygen_balance.toFixed(2) }}
+				oxygen：{{ oxygen_balance.toFixed(2) }}
 			</view>
 			<view class="font_size_32 p_t_30">
-				能量：{{ userInfo.energy_balance }}
+				energy：{{ userInfo.energy_balance }}
 			</view>
 			<view v-if="myGoodList.length > 0"  class="font_size_32 p_t_30">
-				天空：{{ storeGoodsList[myGoodList[3].good_id].name || 0}}
+				sky：{{ storeGoodsList[myGoodList[3].good_id].name || 0}}
 			</view>
 			<view v-if="myGoodList.length > 0"  class="font_size_3宠物2 p_t_30">
-				皮肤：{{ storeGoodsList[myGoodList[4].good_id].name || 0}}
+				skin：{{ storeGoodsList[myGoodList[4].good_id].name || 0}}
 			</view>
 			<view v-if="myGoodList.length > 0"  class="font_size_32 p_t_30">
-				挂饰：{{ storeGoodsList[myGoodList[5].good_id].name || 0}}
+				ornament：{{ storeGoodsList[myGoodList[5].good_id].name || 0}}
 			</view>
 			<view v-if="myGoodList.length > 0"  class="font_size_32 p_t_30">
-				宠物：{{ storeGoodsList[myGoodList[6].good_id].name || 0}}
+				pet：{{ storeGoodsList[myGoodList[6].good_id].name || 0}}
 			</view>
 			
 			<view v-if="myAddress" class="p_t_40 font_size_32 color_99">
-				钱包地址: {{ myAddress }}
+				address: {{ myAddress }}
 			</view>
 			<view v-if="!myAddress" class="p_t_40 font_size_32"  @click="openWallet">
-				去链接
+				link
 			</view>
 			<view v-else class="p_t_40 font_size_32"  @click="closeWallet">
-				断开连接
+				close
 			</view>
 			<view class="p_t_40 font_size_32"  @click="sendTonTransaction(0.00001,recharge)">
-				转账TON
+				transfer TON
 			</view>
 			<view class="p_t_40 font_size_32"  @click="sendUsdtTransaction(0.00001,recharge)">
-				转账USDT
+				transfer USDT
 			</view>
 		
 			<view class="p_t_40">
 				<view class="color_white btn-default p_t_b_20" @click="toStrore">
-					商店
+					store
 				</view>
 				<view class="color_white btn-default p_t_b_20 m_t_20" @click="toBackpack">
-					背包
+					bag
 				</view>
 			</view>
 		</view> -->
-		<!-- 占位符 -->
+	
 		<!-- <view style="height: 200rpx;"></view> -->
-		<!-- 自定义导航栏 -->
+
 		<tabber-list></tabber-list>
 	</view>
 </template>
@@ -148,11 +148,11 @@
 
 	// store
 	const store = useStore()
-	const userInfo = computed(() => store.info) // 用户个人信息
-	const myAddress = computed(() => store.myAddress) // 我的钱包地址
-	const recharge = computed(() => store.recharge) // 我的钱包地址
-	const myGoodList = computed(() => store.my_goods_list) // 我购买的商品
-	const storeGoodsList = computed(() => store.storeGoodsList) // 商店
+	const userInfo = computed(() => store.info) 
+	const myAddress = computed(() => store.myAddress) 
+	const recharge = computed(() => store.recharge) 
+	const myGoodList = computed(() => store.my_goods_list)
+	const storeGoodsList = computed(() => store.storeGoodsList)
 	const timer = ref(null)
 	const oxygen_balance = ref(0)
 
