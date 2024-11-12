@@ -1,27 +1,26 @@
 <template>
 	<view class="page">
 		<view class="canvas">
-			<!-- 云朵位移 -->
+		
 			<view class="cloud">
 				<view class="fly-1"></view>
 				<view class="fly-2"></view>
 				<view class="fly-3"></view>
 			</view>
 
-			<!-- 树、水滴值 -->
 			<view class="tree">
 				<view class="icon">
 					<text class="plus" :class="{'pluss': pluss}">+{{plussNum}}</text>
 				</view>
 				<blockquote v-for="(o, i) in rainArr_" :key="i">
-					<!-- stealed === 1是可以偷取的 -->
+				
 					<view v-if="o.status === 1" :class="['rain rain-'+ stages]" @click="rainFun(i, o)">{{o.all_energy}}<text>g</text></view>
 					<view v-if="o.status === 0" :class="['rain rain-'+ stages]" @click="rainFun(i, o)">{{ setMatchData(o.release_time)}}</view>
 				</blockquote>
 				<image :src="'../../static/img/tree-'+ stages +'.png'" :class="['tree-'+ stages, treemove ? 'move-'+ stages : '']" hover-class="none" @click="tree"></image>
 			</view>
 
-			<!-- 水壶、浇水动画 -->
+		
 			<view class="kettle">
 				<view class="kettls" @click="water" hover-class="none"></view>
 				<view class="flasks" v-show="watercss" :class="{'water': watercss}"></view>
@@ -29,7 +28,7 @@
 				<view class="waters" v-show="waterdom"></view>
 			</view>
 
-			<!-- 用户信息、水滴值 -->
+		
 			<view class="sumup">
 				<!-- <view class="user">
 					<view class="cover">
@@ -41,7 +40,7 @@
 							<view :class="'sex-'+ info.sex"></view>
 						</view>
 						<view class="drop" hover-class="none">
-							<text v-text="info.votes + ' 能量'"></text>
+							<text v-text="info.votes + ' energy'"></text>
 							<view class="icon">
 								<text class="plus" :class="{'pluss': pluss}">+{{plussNum}}</text>
 							</view>
@@ -49,7 +48,7 @@
 					</view>
 				</view> -->
 
-				<!-- 树成长进度 -->
+			
 				<!-- <view class="speed">
 					<view class="progress">
 						<image class="speed-1" :src="'../../static/img/speed-1'+ [1 == stages ? '-h' : ''] +'.png'"></image>
@@ -71,17 +70,17 @@
 	
 	const userId = ref('')
 	const info = ref({
-		name: '沐枫', 	// 用户姓名
-		sex: 2, 		// 用户姓别 1男， 2女
-		votes: 8, 		// 水滴值 默认为8
-		avatar: '../../static/img/detail-bg.jpg' 	//用户头像
+		name: 'musa', 
+		sex: 2, 	
+		votes: 8, 	
+		avatar: '../../static/img/detail-bg.jpg' 	
 	})
-	const rainArr = ref([])// 雨滴值 点击收取
-	const rainArr_ = ref([])// 雨滴值 点击收取
-	const stages = ref(1) // 成长阶段 1(小树[默认])，中2(中树) ，大3(大树)
-	const during = ref(100)	// 阶段阈值 1、小树[100以下](during > votes ) ，2、中树[100及以上 并且小于1000](during <= votes && oldest > votes)
-	const oldest = ref(1000) // 阶段阈值 3、大树[1000及以上](oldest <= votes )
-	const plussNum = ref(1)	// 加值数量（默认1）
+	const rainArr = ref([])
+	const rainArr_ = ref([])
+	const stages = ref(1) 
+	const during = ref(100)	
+	const oldest = ref(1000) 
+	const plussNum = ref(1)	
 	
 	const pluss= ref(false) // 水滴值+1动画开关
 	const movetree = ref(true) // 树动画开关
