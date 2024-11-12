@@ -5,18 +5,18 @@ import { getHomeData } from '@/api/index.js'
 export const useStore = defineStore('counter', {
   state: () => {
     return { 
-		currentTab: 0, // tabber选中的状态
-		myAddress: null, // 钱包地址
-		currentIsConnectedStatus: 0, // 0:钱包加载中，1:已链接，-1:已断开
-		recharge: '', // 转usdt地址
-		info: {}, // 个人信息
-		my_goods_list: [], // 该用户已购装饰商品的列表
-		energy_list: [], // 能量球列表
-		storeGoodsList: {}, // 商店的商品列表，是固定数据，保存到内存
-		upgradeTreeConfig: [], // 升级树的配置列表，是固定数据，保存到内存
+		currentTab: 0, 
+		myAddress: null,
+		currentIsConnectedStatus: 0, 
+		recharge: '', 
+		info: {}, 
+		my_goods_list: [], 
+		energy_list: [], 
+		storeGoodsList: {}, 
+		upgradeTreeConfig: [], 
 	}
   },
-  unistorage: true, // 开启后对 state 的数据读写都将持久化
+  unistorage: true, 
   actions: {
 	getlogin() {
 		return new Promise((resolve, reject) => {
@@ -68,7 +68,7 @@ export const useStore = defineStore('counter', {
 		})
 	},
 	
-	// 获取首页数据
+	
 	setHomedata(data) {
 		getHomeData(data).then(res => {
 			console.log('home', res)
