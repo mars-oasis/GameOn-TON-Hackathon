@@ -23,8 +23,8 @@ import {
 	createUnistorage
 } from "@/uni_modules/pinia-plugin-unistorage/index.js";
 
-if (typeof(window).Buffer === "undefined") { // 判断当前环境是否有Buffer对象
-	(window).Buffer = buffer.Buffer; // Buffer对象不存在则创建导入的buffer
+if (typeof(window).Buffer === "undefined") { 
+	(window).Buffer = buffer.Buffer; 
 }
 
 import tools from '@/utils/tools.js'
@@ -47,7 +47,7 @@ if (!locale) {
 const i18n = createI18n({
 	locale,
 	messages: {
-		'zh-CN': cn, // 本地资源文件，我这里配2个语言，中文&英文，src下根据个人情况放置
+		'zh-CN': cn, 
 		'en-US': en
 	}
 })
@@ -57,7 +57,7 @@ export function createApp() {
 	const store = Pinia.createPinia();
 	app.use(i18n)
 	
-	// 关键代码 👇
+	
 	store.use(createUnistorage());
 
 	app.use(store);
