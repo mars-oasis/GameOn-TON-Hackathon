@@ -1,24 +1,24 @@
 <template>
 	<view class="p_30">
-		<!-- <view class="font_size_48 color_99 p_40" @click="openWallet">连接钱包</view> -->
-		<!-- <view class="font_size_48 color_99 p_40" @click="closeWallet">关闭</view> -->
-		<!-- <view class="font_size_48 color_main p_40" @click="sendTonTransaction">转账ton</view> -->
+		<!-- <view class="font_size_48 color_99 p_40" @click="openWallet">wallet</view> -->
+		<!-- <view class="font_size_48 color_99 p_40" @click="closeWallet">close</view> -->
+		<!-- <view class="font_size_48 color_main p_40" @click="sendTonTransaction">transfer ton</view> -->
 	
 		<view class="flex-row-between">
 			<view class="font_size_28 flex_1">
-				交易类型
+				type
 			</view>
 			<view class="font_size_28 flex_1">
-				交易对象
+				subject
 			</view>
 			<view class="font_size_28 flex_1">
-				金额
+				count
 			</view>
 			<view class="font_size_28 flex_1">
-				产出能量值
+				energy
 			</view>
 			<view class="font_size_28 flex_1">
-				交易时间
+				time
 			</view>
 		</view>
 		<view v-if="list.length > 0"  class="">
@@ -41,11 +41,11 @@
 			</view>
 		</view>
 		<view v-else class="color_99 p_t_30">
-			暂无交易数据
+			
 		</view>
-		<!-- 占位符 -->
+		
 		<view style="height: 200rpx;"></view>
-		<!-- 自定义导航栏 -->
+	
 		<tabber-list></tabber-list>
 	</view>
 </template>
@@ -68,7 +68,7 @@
 		 // myAddress.value
 		txsList({
 			user_id: userInfo.value.user_id,
-			address: 'UQAkc-TU-GqvELbNdr6oYR-MZX9hALvz6prJAz3DaRIeSS20' // 当前联机的钱包地址
+			address: 'UQAkc-TU-GqvELbNdr6oYR-MZX9hALvz6prJAz3DaRIeSS20' 
 		}).then(res=> {
 			console.log(res)
 			taskNameList.value = res.data.task_name_list
@@ -91,9 +91,9 @@
 			getInitData()
 		} else {
 			uni.showModal({
-				title: '温馨提示',
-				content: '你没有链接钱包地址，请现在去链接钱包',
-				confirmText: '链接钱包',
+				title: '1',
+				content: '2',
+				confirmText: '3',
 				success: (res) => {
 					if (res.confirm) {
 						openWallet()
