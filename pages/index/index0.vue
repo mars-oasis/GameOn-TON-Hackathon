@@ -4,44 +4,44 @@
 			<view style="height: 200rpx;" class=""></view>
 			
 			<view class="font_size_32 p_t_30">
-				姓名：{{ userInfo.username }}
+				name：{{ userInfo.username }}
 			</view>
 			<view class="font_size_32 p_t_30">
-				邀请码：{{ userInfo.invite_code }}
+				code：{{ userInfo.invite_code }}
 			</view>
 			<view class="font_size_32 p_t_30">
-				氧气：{{ userInfo.oxygen_balance }}
+				oxygen：{{ userInfo.oxygen_balance }}
 			</view>
 			<view class="font_size_32 p_t_30">
-				能量：{{ userInfo.energy_balance }}
+				energy：{{ userInfo.energy_balance }}
 			</view>
 			<view class="p_t_40 font_size_32 color_99">
-				链接钱包显示地址
+				address
 			</view>
 			<view class="p_t_40 font_size_32"  @click="openWallet">
-				链接钱包
+				wallet
 			</view>
 			<view style="height: 50rpx;" class=""></view>
 			<view class="p_t_40 font_size_32"  @click="closeWallet">
-				关闭钱包
+				close wallet
 			</view>
 			
 			<view style="height: 50rpx;" class=""></view>
 			<view class="p_t_40 font_size_32"  @click="sendTonTransaction">
-				转账TON
+				Transfer TON
 			</view>
 			
 			<view style="height: 50rpx;" class=""></view>
 			<view class="p_t_40 font_size_32"  @click="sendUsdtTransaction">
-				转账USDT
+				Transfer USDT
 			</view>
 		
 			<view class="p_t_40">
 				<view class="color_white btn-default p_t_b_20" @click="toStrore">
-					商店
+					Store
 				</view>
 				<view class="color_white btn-default p_t_b_20 m_t_20" @click="toBackpack">
-					背包
+					Bag
 				</view>
 			</view>
 		</view>
@@ -64,7 +64,7 @@
 	const jettonMinterUsdt = new TonWeb.token.jetton.JettonMinter(tonweb.provider, { address: new TonWeb.utils.Address(usdtAddress) });
 	
 	const myAddress = ref(null)
-	const currentIsConnectedStatus = ref(0) // 0:钱包加载中，1:已链接，-1:已断开
+	const currentIsConnectedStatus = ref(0) 
 	
 	import { toNano } from '@ton/ton'
 	import { TonConnectUI } from '@tonconnect/ui'
@@ -108,7 +108,7 @@
 			await modal.open();
 		} else if (currentIsConnectedStatus.value == 1) {
 			uni.showToast({
-				title: "无需再次链接，已链接了钱包: " + myAddress.value,
+				title: "2: " + myAddress.value,
 				icon: 'none'
 			})
 		}
@@ -117,12 +117,12 @@
 	const closeWallet = async () => {
 		if (currentIsConnectedStatus.value === 0) {
 			uni.showToast({
-				title: "钱包加载中" ,
+				title: "loading" ,
 				icon: 'none'
 			})
 		} else if (currentIsConnectedStatus.value === -1) {
 			uni.showToast({
-				title: "钱包未链接，无需断开" ,
+				title: "none" ,
 				icon: 'none'
 			})
 		} else if (currentIsConnectedStatus.value === 1) {
@@ -138,7 +138,7 @@
 			await tonweb.provider.getAddressInfo(to_address);
 		} catch (error) {
 			uni.showToast({
-				title: "错误:" + error,
+				title: "error:" + error,
 				icon: 'none'
 			})
 			return
@@ -157,7 +157,7 @@
 			const result = await tonConnectUI.sendTransaction(transaction)
 			console.log("result : ", result)
 			if (result && result['boc']) {
-				console.log('转账成功', result['boc'])
+				console.log('Success', result['boc'])
 			}
 		} catch (e) {
 			uni.showToast({
@@ -180,14 +180,14 @@
 			await tonweb.provider.getAddressInfo(to_address)
 		} catch (error) {
 			uni.showToast({
-				title: "错误:" + error,
+				title: "error:" + error,
 				icon: 'none'
 			})
 			return
 		}
 	
 		const jettonMinterAddress = await jettonMinterUsdt.getJettonWalletAddress(new TonWeb.utils.Address(myAddress.value))
-		console.log("钱包的USDT合约地址jettonMinterAddress:", jettonMinterAddress.toString(true))
+		console.log("jettonMinterAddress:", jettonMinterAddress.toString(true))
 		const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
 			address: jettonMinterAddress
 		});
