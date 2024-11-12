@@ -11,37 +11,37 @@
 					</view>
 				</view>
 				<view v-if="current != 2" class="font_size_28">{{ item.oxygen_balance.toFixed(2)}}</view>
-				<!-- 0: 没有可偷取的能量球，1:有可偷取的能量球 -->
+	
 				<image v-if="current === 0 && item.now_can_steal === 1"  src="../../static/images/shou.png" mode="aspectFill" class="tip-icon"></image>
 			</view>
 		</view>
 		
 		<view v-else class="p_l_r_30">
 			<view class="color_bg_f8 border_radius_20">
-				<view class="p_30 m_b_30 color_bg_white">我的要求奖励: {{allEnerger}}</view>
+				<view class="p_30 m_b_30 color_bg_white">: {{allEnerger}}</view>
 				<view class="p_30 color_bg_white">
-					<view class="font_size_44">通过链接邀请</view>
+					<view class="font_size_44"></view>
 					<view class="flex-row-between p_b_30 hairline_bottom">
-						<view class="font_size_28 p_t_20">链接:  https://t.me/my1gametestbot/mygame1?startapp=eem9cl</view>
-						<view class="color_main font_size_28 flex_shrink" @click="copy(1)">复制</view>
+						<view class="font_size_28 p_t_20">:  https://t.me/my1gametestbot/mygame1?startapp=eem9cl</view>
+						<view class="color_main font_size_28 flex_shrink" @click="copy(1)"></view>
 					</view>
 					<view class="flex-row-between p_b_30 hairline_bottom">
-						<view class="font_size_28 p_t_20">邀请码:  {{ userInfo.invite_code }}</view>
-						<view class="color_main font_size_28" @click="copy(2)">复制</view>
+						<view class="font_size_28 p_t_20">:  {{ userInfo.invite_code }}</view>
+						<view class="color_main font_size_28" @click="copy(2)"></view>
 					</view>
 				</view>
 				
 				<view class="p_30 color_bg_white">
-					<view class="font_size_44">通过记录</view>
+					<view class="font_size_44"></view>
 					<view class="flex-row-between">
 						<view class="font_size_28 flex_1">
 							UID
 						</view>
 						<view class="font_size_28 flex_1">
-							结算时间
+							Time
 						</view>
 						<view class="font_size_28 flex_1">
-							获得氧气
+							Oxygen
 						</view>
 					</view>
 					<view v-if="list.length > 0"  class="">
@@ -58,7 +58,7 @@
 						</view>
 					</view>
 					<view v-else class="color_99 p_t_30">
-						暂无邀请数据
+						
 					</view>
 				</view>
 			</view>
@@ -78,9 +78,9 @@
 			horizontal="right"
 			@fabClick="fabClick"
 		></uni-fab>
-		<!-- 占位符 -->
+		
 		<view style="height: 200rpx;"></view>
-		<!-- 自定义导航栏 -->
+	
 		<tabber-list></tabber-list>
 	</view>
 </template>
@@ -98,9 +98,9 @@
 	let allEnerger = ref(0)
 
 	const tabs =ref([
-		{ id: 0, name: '好友榜单'},
-		{ id: 1, name: '世界榜单'},
-		{ id: 2, name: '邀请好友'}
+		{ id: 0, name: 'leaderboard'},
+		{ id: 1, name: 'leaderboard'},
+		{ id: 2, name: 'add friends'}
 	])
 	
 	const store = useStore()
@@ -131,18 +131,18 @@
 		})
 	}
 	
-	// 通过好友
+
 	const agreeFriend = (item) => {
 		popupShow.value = true
 		detail.value = item
 		popupRef.value?.open('center')
 	}
 	
-	// 切换tabs
+
 	const handleTabs = (index) => {
 		list.value = []
 		current.value = index
-		// 重新获取数据
+		
 		if (current.value <=1) {
 			getFriendData()
 		} else {
@@ -150,17 +150,17 @@
 		}
 	}
 	
-	// 获取好友列表
+
 	const getFriendData = () => {
 		const friend_type = 
 		getFriend({
 			user_id: userInfo.value.user_id,
-			friend_type: current.value === 0 ? 1: 2, // 1 我的好友 2 全网用户
+			friend_type: current.value === 0 ? 1: 2, 
 		}).then(res => { 
 			list.value = res.data
 		})
 	}
-	// 获取申请的好友
+
 	const getMyinvatedData = () => {
 		myinvatedList({
 			user_id: userInfo.value.user_id
